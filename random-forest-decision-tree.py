@@ -1,3 +1,7 @@
+import pydot
+import matplotlib.pyplot as plt
+from subprocess import check_call
+from sklearn.tree import export_graphviz
 from sklearn.metrics import roc_curve, auc
 import numpy as np
 from sklearn import metrics
@@ -50,9 +54,26 @@ col_names = [x for x in mushrooms.columns]
 col_names = col_names[1:]
 feature_imp = pd.Series(model_RF.feature_importances_,
                         index=col_names).sort_values(
-                        ascending=False)
+    ascending=False)
 # print(feature_imp)
 plot_feature_importance(feature_imp, feature_imp.index)
+# Export as dot file
+estimator = model_RF.estimators_[5]
+export_graphviz(estimator, out_file='tree.dot',
+                feature_names=col_names,
+                rounded=True, proportion=False,
+                precision=2, filled=True)
+
+# Convert to png
+
+(graph,) = pydot.graph_from_dot_file('./report/random-forest/tree.dot')
+graph.write_png('./report/random-forest/tree.png')
+
+# Display in python
+plt.figure(figsize=(14, 18))
+plt.imshow(plt.imread('./report/random-forest/tree.png'))
+plt.axis('off')
+plt.show()
 
 # Decision tree
 model_tree = DecisionTreeClassifier()
@@ -82,6 +103,20 @@ plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
 plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
 feature_imp = pd.Series(model_tree.feature_importances_,
                         index=col_names).sort_values(
-                        ascending=False)
+    ascending=False)
 # print(feature_imp)
 plot_feature_importance(feature_imp, feature_imp.index)
+export_graphviz(model_tree, out_file='decision-tree.dot',
+                feature_names=col_names,
+                rounded=True, proportion=False,
+                precision=2, filled=True)
+
+# Convert to png
+
+(graph,) = pydot.graph_from_dot_file('./report/decision-tree/decision-tree.dot')
+graph.write_png('./report/decision-tree/decision-tree.png')
+# Display in python
+plt.figure(figsize=(14, 18))
+plt.imshow(plt.imread('./report/decision-tree/decision-tree.png'))
+plt.axis('off')
+plt.show()

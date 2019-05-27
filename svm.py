@@ -25,7 +25,7 @@ svm_model = SVC()
 tuned_parameters = {
     'C': [1, 10, 100, 500, 1000], 'kernel': ['linear', 'rbf'],
     'C': [1, 10, 100, 500, 1000], 'gamma': [1, 0.1, 0.01, 0.001, 0.0001],
-    'kernel': ['linear']
+    'kernel': ['rbf']
     # 'degree': [2,3,4,5,6] , 'C':[1,10,100,500,1000] , 'kernel':['poly']
 }
 model_svm = RandomizedSearchCV(svm_model, tuned_parameters, cv=10,
@@ -62,5 +62,5 @@ feature_imp = pd.Series(model_svm.best_estimator_.coef_,
                         index=col_names).sort_values(
                         ascending=False)
 # print(feature_imp)
-plot_feature_importance(feature_imp, feature_imp.index)
+# plot_feature_importance(feature_imp, feature_imp.index)
 # Support Vector Machine with polynomial Kernel
