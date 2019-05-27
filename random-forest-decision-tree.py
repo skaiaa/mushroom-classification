@@ -5,10 +5,9 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, cross_val_score
-from plots import plot_roc_curve, plot_confusion_matrix
+from plots import plot_roc_curve, plot_confusion_matrix, plot_feature_importance
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
-
 
 mushrooms = pd.read_csv("./mushrooms.csv")
 mushrooms = mushrooms.drop("veil-type", axis=1)
@@ -47,6 +46,13 @@ print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
 plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
+col_names = [x for x in mushrooms.columns]
+col_names = col_names[1:]
+feature_imp = pd.Series(model_RF.feature_importances_,
+                        index=col_names).sort_values(
+                        ascending=False)
+# print(feature_imp)
+plot_feature_importance(feature_imp, feature_imp.index)
 
 # Decision tree
 model_tree = DecisionTreeClassifier()
@@ -74,3 +80,8 @@ print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
 plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
+feature_imp = pd.Series(model_tree.feature_importances_,
+                        index=col_names).sort_values(
+                        ascending=False)
+# print(feature_imp)
+plot_feature_importance(feature_imp, feature_imp.index)
