@@ -8,24 +8,11 @@ from sklearn.model_selection import cross_val_score
 from sklearn.metrics import roc_curve, auc
 from sklearn import metrics
 import matplotlib.pyplot as plt
-
-
-def plot_roc_curve(false_positive_rate, true_positive_rate, auc):
-    plt.figure(figsize=(10, 10))
-    plt.title("ROC - Receiver Operating Characteristic")
-    plt.plot(false_positive_rate, true_positive_rate, color='red',
-             label='AUC = %0.2f' % auc)
-    plt.legend(loc='lower right')
-    plt.plot([0, 1], [0, 1], linestyle='--')
-    plt.axis('tight')
-    plt.ylabel('True Positive Rate')
-    plt.xlabel('False Positive Rate')
-    plt.show()
+from plots import plot_roc_curve, plot_confusion_matrix
 
 
 mushrooms = pd.read_csv("./mushrooms.csv")
 mushrooms = mushrooms.drop("veil-type", axis=1)
-print(mushrooms.head(5))
 label_encoder = LabelEncoder()
 for col in mushrooms.columns:
     mushrooms[col] = label_encoder.fit_transform(mushrooms[col])
@@ -66,3 +53,6 @@ roc_auc = auc(false_positive_rate, true_positive_rate)
 print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
+plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
+# print("Real number of edible: ", (np.where(y_test == 0, 1, 0)).sum())
+# print("Real number of poisonous: ", (np.where(y_test == 1, 1, 0)).sum())

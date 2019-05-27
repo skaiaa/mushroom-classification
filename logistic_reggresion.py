@@ -7,20 +7,7 @@ import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split, cross_val_score
-import matplotlib.pyplot as plt
-
-
-def plot_roc_curve(false_positive_rate, true_positive_rate, auc):
-    plt.figure(figsize=(10, 10))
-    plt.title("ROC - Receiver Operating Characteristic")
-    plt.plot(false_positive_rate, true_positive_rate, color='red',
-             label='AUC = %0.2f' % auc)
-    plt.legend(loc='lower right')
-    plt.plot([0, 1], [0, 1], linestyle='--')
-    plt.axis('tight')
-    plt.ylabel('True Positive Rate')
-    plt.xlabel('False Positive Rate')
-    plt.show()
+from plots import plot_roc_curve, plot_confusion_matrix
 
 
 mushrooms = pd.read_csv("./mushrooms.csv")
@@ -61,6 +48,7 @@ roc_auc = auc(false_positive_rate, true_positive_rate)
 print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
+plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
 
 # Logistic Regression (Tuned Model)
 LR_model = LogisticRegression(solver='saga')
@@ -109,6 +97,7 @@ roc_auc = auc(false_positive_rate, true_positive_rate)
 print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
+plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])
 
 # Logistic Regression with Rigde penalty
 LR_ridge = LogisticRegression(penalty='l2', solver='saga')
@@ -138,3 +127,4 @@ roc_auc = auc(false_positive_rate, true_positive_rate)
 print("AUC: ", roc_auc)
 
 plot_roc_curve(false_positive_rate, true_positive_rate, roc_auc)
+plot_confusion_matrix(confusion_matrix, ['edible', 'poisonous'])

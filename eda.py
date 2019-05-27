@@ -1,4 +1,3 @@
-from sklearn.model_selection import cross_val_score
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
@@ -94,3 +93,5 @@ plt.show()
 pca_modified = PCA(n_components=17)
 pca_modified.fit_transform(X)
 print("PCA with 17 components: ", pca_modified)
+# p - 1
+# e - 0
