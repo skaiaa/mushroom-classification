@@ -1,0 +1,21 @@
+Naive Bayes score:  1.0
+Number of mislabeled points from 1625 points: 111
+Cross validation scores:  [0.59778598 0.78843788 0.97908979 0.9803198  0.84870849 0.81303813
+ 0.81034483 0.81650246 0.85326757 0.97533909]
+Mean cross validation score:  0.8462834022887495
+Confusion Matrix
+[[786  59]
+ [ 52 728]]
+Classification Report
+              precision    recall  f1-score   support
+
+           0       0.94      0.93      0.93       845
+           1       0.93      0.93      0.93       780
+
+    accuracy                           0.93      1625
+   macro avg       0.93      0.93      0.93      1625
+weighted avg       0.93      0.93      0.93      1625
+
+ROC AUC score:  0.9317554240631164
+AUC:  0.9592201486876043
+

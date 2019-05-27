@@ -1,0 +1,21 @@
+Logistic Regression with Ridge penalty score:  1.0
+Confusion Matrix
+[[814  31]
+ [ 38 742]]
+Classification Report
+              precision    recall  f1-score   support
+
+           0       0.96      0.96      0.96       845
+           1       0.96      0.95      0.96       780
+
+    accuracy                           0.96      1625
+   macro avg       0.96      0.96      0.96      1625
+weighted avg       0.96      0.96      0.96      1625
+
+AUC ROC score:  0.9572978303747534
+Cross validation scores:  [0.65436654 0.85239852 0.98277983 0.98646986 0.9102091  0.88314883
+ 0.99876847 0.99630542 0.66584464 0.94944513]
+Mean cross validation score:  0.8879736351073886
+AUC:  0.9903019268699742
+
+

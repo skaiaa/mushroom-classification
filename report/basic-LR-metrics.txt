@@ -1,0 +1,10 @@
+Logistic Regression score:  1.0
+Confusion Matrix
+[[815  30]
+ [ 36 744]]
+AUC ROC score:  0.9591715976331362
+Cross validation scores:  [0.65436654 0.85116851 0.98277983 0.98769988 0.9102091  0.88314883
+ 0.99876847 0.99630542 0.66584464 0.95067818]
+Mean cross validation score:  0.8880969396696573
+AUC:  0.9903474434835382
+

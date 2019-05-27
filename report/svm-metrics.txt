@@ -1,0 +1,20 @@
+SVM
+Best score:  1.0
+Best parameters:  {'kernel': 'rbf', 'gamma': 1, 'C': 1000}
+Accuracy score:  1.0
+Confusion Matrix
+[[845   0]
+ [  0 780]]
+Classification Report
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00       845
+           1       1.00      1.00      1.00       780
+
+    accuracy                           1.00      1625
+   macro avg       1.00      1.00      1.00      1625
+weighted avg       1.00      1.00      1.00      1625
+
+ROC AUC score:  1.0
+AUC:  1.0
+
