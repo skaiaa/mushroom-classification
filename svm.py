@@ -4,8 +4,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 from sklearn.model_selection import train_test_split
-import numpy as np
-from sklearn.model_selection import cross_val_score
 from sklearn.metrics import roc_curve, auc
 from sklearn import metrics
 from plots import plot_roc_curve, plot_confusion_matrix
