@@ -1,6 +1,5 @@
 import pydot
 import matplotlib.pyplot as plt
-from subprocess import check_call
 from sklearn.tree import export_graphviz
 from sklearn.metrics import roc_curve, auc
 import numpy as np

@@ -61,15 +61,14 @@ covariance = pca.get_covariance()
 explained_variance = pca.explained_variance_
 print(explained_variance)
 
-with plt.style.context('dark_background'):
-    plt.figure(figsize=(6, 4))
-    plt.bar(range(22), explained_variance, alpha=0.5, align='center',
-            label='idividual explained variance')
-    plt.ylabel('Explained variance ratio')
-    plt.xlabel('Principal components')
-    plt.legend(loc='best')
-    plt.tight_layout()
-    plt.show()
+plt.figure(figsize=(6, 4))
+plt.bar(range(22), explained_variance, alpha=0.5, align='center',
+        label='idividual explained variance')
+plt.ylabel('Explained variance ratio')
+plt.xlabel('Principal components')
+plt.legend(loc='best')
+plt.tight_layout()
+plt.show()
 
 # take first two principal components and visualize it using
 # K-means clustering
@@ -95,3 +94,14 @@ pca_modified.fit_transform(X)
 print("PCA with 17 components: ", pca_modified)
 # p - 1
 # e - 0
+# correlation
+sns.set(font_scale=0.6)
+
+correlation = mushrooms.corr()
+plt.figure(figsize=(10, 7))
+sns.heatmap(correlation, vmax=1, square=True,
+            annot=True, cmap='viridis', fmt='.1f')
+
+wrap = plt.title('Correlation between different features')
+
+plt.show()
