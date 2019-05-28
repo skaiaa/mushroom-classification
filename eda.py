@@ -8,8 +8,8 @@ from sklearn.preprocessing import LabelEncoder
 
 mushrooms = pd.read_csv("./mushrooms.csv")
 # display first 6 rows
+mushrooms = mushrooms.drop("veil-type", axis=1)
 print(mushrooms.head(6))
-
 # checking for null values (missing data)
 print(mushrooms.isnull().sum())
 
@@ -41,7 +41,7 @@ plt.show()
 # separating features and label (class)
 
 # all rows, all features, no labels
-X = mushrooms.iloc[:, 1:23]
+X = mushrooms.iloc[:, 1:22]
 y = mushrooms.iloc[:, 0]
 print(X.head())
 print(y.head())
@@ -60,10 +60,13 @@ pca.fit_transform(X)
 covariance = pca.get_covariance()
 explained_variance = pca.explained_variance_
 print(explained_variance)
-
+col_names = [x for x in mushrooms.columns]
+col_names = col_names[1:]
 plt.figure(figsize=(6, 4))
-plt.bar(range(22), explained_variance, alpha=0.5, align='center',
+
+plt.bar(range(21), explained_variance, alpha=0.5, align='center',
         label='idividual explained variance')
+plt.xticks([x for x in range(21)], labels=col_names, rotation=20)
 plt.ylabel('Explained variance ratio')
 plt.xlabel('Principal components')
 plt.legend(loc='best')
