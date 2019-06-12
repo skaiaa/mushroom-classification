@@ -1,0 +1,29 @@
+Random Forest model:  AdaBoostClassifier(algorithm='SAMME.R',
+                   base_estimator=RandomForestClassifier(bootstrap=True,
+                                                         class_weight=None,
+                                                         criterion='gini',
+                                                         max_depth=30,
+                                                         max_features='sqrt',
+                                                         max_leaf_nodes=None,
+                                                         min_impurity_decrease=0.0,
+                                                         min_impurity_split=None,
+                                                         min_samples_leaf=1,
+                                                         min_samples_split=5,
+                                                         min_weight_fraction_leaf=0.0,
+                                                         n_estimators=400,
+                                                         n_jobs=None,
+                                                         oob_score=False,
+                                                         random_state=None,
+                                                         verbose=0,
+                                                         warm_start=False),
+                   learning_rate=1.0, n_estimators=400, random_state=None)
+Random Forest score:  1.0
+Confusion Matrix
+[[845   0]
+ [  0 780]]
+ROC AUC score:  1.0
+Cross validation scores:  [0.68511685 1.         1.         1.         1.         1.
+ 1.         1.         0.97780518 1.        ]
+Mean cross validation score:  0.9662922029960127
+AUC:  1.0
+
